@@ -69,8 +69,7 @@ function ready(datapoints) {
     .append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`)
 
-
-    svg
+  svg
     .append('path')
     .attr('d', function(d) {
       return lineus(d.values)
@@ -79,37 +78,37 @@ function ready(datapoints) {
     .attr('stroke-width', 2)
     .attr('fill', 'none')
     .lower()
-    // .each(function(d) {
-    //   var g = d3.select(this)
+  // .each(function(d) {
+  //   var g = d3.select(this)
 
-    //   var datapoints = d.values
-    //   console.log(datapoints)}
+  //   var datapoints = d.values
+  //   console.log(datapoints)}
 
-      // Need to use + here to convert to numbers
-      // let maxHigh = d3.max(datapoints, d => +d.high)
-      // let minHigh = d3.min(datapoints, d => +d.high)
+  // Need to use + here to convert to numbers
+  // let maxHigh = d3.max(datapoints, d => +d.high)
+  // let minHigh = d3.min(datapoints, d => +d.high)
 
-      // g.append('circle')
-      //   .attr('r', 7)
-      //   .attr('fill', 'pink')
-      //   .attr('cy', 0)
-      //   .attr('cx', xPositionScale(maxHigh))
+  // g.append('circle')
+  //   .attr('r', 7)
+  //   .attr('fill', 'pink')
+  //   .attr('cy', 0)
+  //   .attr('cx', xPositionScale(maxHigh))
 
-      // g.append('circle')
-      //   .attr('r', 7)
-      //   .attr('fill', 'lightblue')
-      //   .attr('cy', 0)
-      //   .attr('cx', xPositionScale(minHigh))
+  // g.append('circle')
+  //   .attr('r', 7)
+  //   .attr('fill', 'lightblue')
+  //   .attr('cy', 0)
+  //   .attr('cx', xPositionScale(minHigh))
 
-      // g.append('line')
-      //   .attr('y1', 0)
-      //   .attr('y2', 0)
-      //   .attr('x1', xPositionScale(minHigh))
-      //   .attr('x2', xPositionScale(maxHigh))
-      //   .attr('stroke', 'grey')
-      //   .lower()
+  // g.append('line')
+  //   .attr('y1', 0)
+  //   .attr('y2', 0)
+  //   .attr('x1', xPositionScale(minHigh))
+  //   .attr('x2', xPositionScale(maxHigh))
+  //   .attr('stroke', 'grey')
+  //   .lower()
 
-      // Add your axes
+  // Add your axes
   var xAxis = d3
     .axisBottom(xPositionScale)
     .tickFormat(d3.timeFormat('%b %y'))
@@ -120,13 +119,10 @@ function ready(datapoints) {
     .attr('transform', 'translate(0,' + height + ')')
     .call(xAxis)
 
-  var yAxis = d3
-    .axisLeft(yPositionScale)
-    .tickValues([0.0, 0.1, 0.2, 0.3])
+  var yAxis = d3.axisLeft(yPositionScale).tickValues([0.0, 0.1, 0.2, 0.3])
 
   svg
     .append('g')
     .attr('class', 'axis y-axis')
     .call(yAxis)
-
 }

@@ -80,7 +80,7 @@ function ready(datapoints) {
   let dates = datapoints.map(function(d) {
     return d.datetime
   })
-  console.log(datapoints)
+  // console.log(datapoints)
 
   xPositionScale.domain(d3.extent(dates))
 
@@ -91,7 +91,7 @@ function ready(datapoints) {
     .nest()
     .key(d => d.region)
     .entries(datapoints)
-  console.log(nested)
+  // console.log(nested)
 
   // Draw your lines
 
@@ -130,8 +130,8 @@ function ready(datapoints) {
     .append('text')
     .attr('class', 'region-category')
     .attr('y', d => yPositionScale(d.values[0].price))
-    .attr('x', width + 7)
-    .attr('dy', -5)
+    .attr('x', width)
+    .attr('dx', 7)
     .attr('alignment-baseline', 'hanging')
     .attr('font-size', 12)
     // .attr('text-anchor', 'start')
@@ -182,4 +182,14 @@ function ready(datapoints) {
     .append('g')
     .attr('class', 'axis y-axis')
     .call(yAxis)
+}
+
+export {
+  xPositionScale,
+  yPositionScale,
+  colorScale,
+  width,
+  height,
+  line,
+  parseTime
 }
