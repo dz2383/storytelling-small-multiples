@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 
 // Create your margins and height/width
-var margin = { top: 30, left: 40, right: 10, bottom: 20 }
+var margin = { top: 30, left: 40, right: 20, bottom: 20 }
 
 var height = 200 - margin.top - margin.bottom
 var width = 150 - margin.left - margin.right
@@ -99,6 +99,7 @@ function ready([datapoints_world, datapoints_us]) {
       // Add your axes
       var xAxis = d3
         .axisBottom(xPositionScale)
+        .tickFormat(d3.format('d'))
         .tickValues([1980, 1990, 2000, 2010])
         .tickSize(-height)
 
@@ -113,8 +114,8 @@ function ready([datapoints_world, datapoints_us]) {
         .axisLeft(yPositionScale)
         .tickFormat(d3.format('$,d'))
         .tickSize(-width)
-        // .tickValues([50000, 10000, 15000, 20000])
-        .ticks(4)
+        .tickValues([5000, 10000, 15000, 20000])
+        
 
       svg
         .append('g')
