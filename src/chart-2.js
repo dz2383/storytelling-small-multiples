@@ -74,7 +74,7 @@ function ready(datapoints) {
       var svg = d3.select(this)
 
       var datapoints = d.values
-      console.log(datapoints)
+      // console.log(datapoints)
 
       let rateUS = d3.sum(datapoints, d => +d.ASFR_us).toFixed(2)
       let rateJP = d3.sum(datapoints, d => +d.ASFR_jp).toFixed(2)

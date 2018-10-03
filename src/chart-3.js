@@ -39,7 +39,7 @@ function ready([datapoints_world, datapoints_us]) {
     .nest()
     .key(d => d.country)
     .entries(datapoints_world)
-  console.log(nested)
+  // console.log(nested)
 
   // put out years on x axis
   // use  d3.extent() !
