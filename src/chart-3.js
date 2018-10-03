@@ -130,3 +130,12 @@ function ready([datapoints_world, datapoints_us]) {
       svg.selectAll('.domain').remove()
     })
 }
+export {
+  xPositionScale,
+  yPositionScale,
+  width,
+  height,
+  line,
+  container
+}
+

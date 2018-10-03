@@ -25,7 +25,7 @@ var line_us = d3
   .y(function(d) {
     return yPositionScale(d.ASFR_us)
   })
-  //.curve(d3.curveMonotoneX)
+// .curve(d3.curveMonotoneX)
 
 var line_jp = d3
   .line()
@@ -35,10 +35,9 @@ var line_jp = d3
   .y(function(d) {
     return yPositionScale(d.ASFR_jp)
   })
-  //.curve(d3.curveMonotoneX)
+// .curve(d3.curveMonotoneX)
 
 // area = d3.area()
-
 
 // Read in your data
 d3.csv(require('./fertility.csv'))
@@ -66,7 +65,7 @@ function ready(datapoints) {
     .data(nested)
     .enter()
     .append('svg')
-    .attr('class','fertility-svg')
+    .attr('class', 'fertility-svg')
     .attr('height', height + margin.top + margin.bottom)
     .attr('width', width + margin.left + margin.right)
     .append('g')
@@ -106,7 +105,9 @@ function ready(datapoints) {
         .attr('y', height / 2)
         .attr('text-anchor', 'middle')
         .style('font-size', 8)
-        .style('fill', 'lightblue')
+        .attr('stroke', 'lightblue')
+        .attr('fill', 'lightblue')
+        .attr('opacity', 0.6)
         .text(rateUS)
 
       svg
@@ -115,7 +116,9 @@ function ready(datapoints) {
         .attr('y', height / 2 + 10)
         .attr('text-anchor', 'middle')
         .style('font-size', 8)
-        .style('fill', 'red')
+        .attr('stroke', 'red')
+        .attr('fill', 'red')
+        .attr('opacity', 0.4)
         .text(rateJP)
 
       // Add your title
@@ -146,4 +149,13 @@ function ready(datapoints) {
         .attr('class', 'axis y-axis')
         .call(yAxis)
     })
+}
+export {
+  xPositionScale,
+  yPositionScale,
+  width,
+  height,
+  line_us,
+  line_jp,
+  container
 }

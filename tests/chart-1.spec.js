@@ -9,10 +9,6 @@ document.body.innerHTML = fs.readFileSync('src/index.html')
 /* Run the code for our chart */
 const chart = require('../src/chart-1')
 
-function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index
-}
-
 /* 
   Unit tests
 */
@@ -152,13 +148,15 @@ describe('The points', () => {
       .selectAll('#chart-1 > svg > g > path')
       .nodes()
       .map(e => e.getAttribute('stroke'))
+    pointColors.sort()
+    lineColors.sort()
     expect(pointColors).toEqual(lineColors)
   })
 
-  test('are on the right-hand side of the page', () => {
+  test('are on the right-hand side of the chart', () => {
     d3.selectAll('#chart-1 > svg > g > circle').each(function() {
       let circle = d3.select(this)
-      expect(+circle.attr('cx')).toBeGreaterThan(chart.width * 0.75)
+      expect(+circle.attr('cx')).toEqual(chart.width)
     })
   })
 })
@@ -184,5 +182,33 @@ describe('The text', () => {
     expect(dy).not.toBeUndefined()
     expect(dy).not.toBeNull()
     expect(dy).toBeGreaterThan(0)
+  })
+})
+
+describe('The y axis', () => {
+  test('Exists and has the class y-axis', () => {
+    let group = d3.select('#chart-1 .y-axis')
+    expect(group).not.toBeNull()
+  })
+
+  test('has more than 5 but fewer than 10 tick marks', () => {
+    let texts = d3.selectAll('#chart-1 .y-axis text')
+    expect(texts.size()).toBeGreaterThan(5)
+    expect(texts.size()).toBeLessThan(10)
+  })
+})
+
+describe('The x axis', () => {
+  test('Exists and has the class x-axis', () => {
+    let group = d3.select('#chart-1 .x-axis')
+    expect(group).not.toBeNull()
+  })
+
+  test('is formatted as the abbreviated month name and the 2-digit year', () => {
+    let texts = d3.selectAll('#chart-1 .x-axis text')
+    texts.each(function(d) {
+      let element = d3.select(this)
+      expect(element.text()).toMatch(/\w\w\w \d\d/)
+    })
   })
 })

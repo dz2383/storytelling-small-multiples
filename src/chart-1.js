@@ -48,7 +48,8 @@ var colorScale = d3
     '#abdda4',
     '#66c2a5',
     '#3288bd',
-    '#92c5de'
+    '#92c5de',
+    'salmon'
   ])
 
 // Create a d3.line function that uses your scales
