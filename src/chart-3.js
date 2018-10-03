@@ -59,7 +59,7 @@ function ready([datapoints_world, datapoints_us]) {
       var svg = d3.select(this)
 
       var datapoints = d.values
-      console.log(datapoints)
+      // console.log(datapoints)
 
       svg
         .append('path')
