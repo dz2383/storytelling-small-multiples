@@ -1,8 +1,9 @@
 
 dist
 node_modules
+hint
 .cache
-hints
+
 
 # Created by https://www.gitignore.io/api/osx,node
 
